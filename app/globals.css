@@ -178,83 +178,112 @@ body {
   transform: scale(1.1);
 }
 
-/* Editorial Center Layered Stage */
-.editorial-hero-stage {
-  position: relative;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  height: 76vh;
+/* ===================== STYLISH TEXT HERO (NO PHOTO) ===================== */
+.text-hero-stage {
+  height: 72vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
-/* Center Subject Portrait Image */
-.hero-portrait-wrapper {
-  position: relative;
-  height: 100%;
-  max-height: 720px;
-  width: 100%;
-  max-width: 680px;
-  z-index: 2;
+.stylish-hero-container {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  pointer-events: none;
-}
-
-.hero-portrait-img {
+  text-align: center;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  filter: contrast(1.08) brightness(0.95);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  max-width: 1100px;
+  position: relative;
+  z-index: 5;
 }
 
-/* Single Container for Giant Headline Text Layering */
-.hero-giant-text-wrapper {
+/* Name Pill Badge */
+.hero-name-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1.4rem;
+  border-radius: 50px;
+  background: rgba(236, 227, 206, 0.06);
+  border: 1px solid var(--border-cream);
+  color: var(--cream-main);
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 30px rgba(236, 227, 206, 0.08);
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* Main PORTFOLIO Headline */
+.stylish-portfolio-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.stylish-portfolio-title {
+  font-family: var(--font-display);
+  font-size: clamp(6.5rem, 20vw, 17.5rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: 0.05em;
+  color: var(--cream-light);
+  background: linear-gradient(180deg, #ffffff 0%, #ece3ce 65%, #a39e93 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.stylish-portfolio-glow {
   position: absolute;
-  top: 48%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(6.5rem, 18vw, 16.5rem);
+  font-size: clamp(6.5rem, 20vw, 17.5rem);
   font-weight: 400;
-  line-height: 0.82;
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  user-select: none;
-  pointer-events: none;
-  text-align: center;
-  box-sizing: border-box;
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Layer 1: Solid Cream Background Text (Behind Subject) */
-.hero-text-solid {
-  position: relative;
-  z-index: 1;
-  color: var(--cream-main);
-  display: block;
-  width: 100%;
-}
-
-/* Layer 3: Outlined Stroke Foreground Text (Over Subject) */
-.hero-text-stroke {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
+  line-height: 0.85;
+  letter-spacing: 0.05em;
   color: transparent;
-  -webkit-text-stroke: 1.8px var(--cream-main);
-  display: block;
+  -webkit-text-stroke: 1.5px rgba(236, 227, 206, 0.25);
+  filter: blur(12px);
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+/* Subtitle */
+.stylish-hero-sub {
+  font-family: var(--font-main);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-slate);
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.stylish-hero-sub strong {
+  color: var(--cream-light);
+}
+
+/* Hero Actions */
+.hero-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Editorial Bottom Bar */
