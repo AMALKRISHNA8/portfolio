@@ -51,15 +51,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="editorial-bottom-bar">
-          <div className="hero-name-label">
-            Amal Krishna A.K
-          </div>
-          <a href="#contact" className="hero-domain-link">
-            amalkrishna.dev
-          </a>
-        </div>
       </section>
 
       {/* Editorial Bio Strip */}
