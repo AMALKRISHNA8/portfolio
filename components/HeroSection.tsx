@@ -19,12 +19,17 @@ export default function HeroSection() {
 
         {/* Center Stage: Layered Text + Subject Portrait Image */}
         <div className="editorial-hero-stage">
-          {/* Layer 1: Solid Cream Giant Headline Text Behind Subject */}
-          <div className="hero-giant-text-bg">
-            PORTFOLIO
+          {/* Giant Text Wrapper containing both Solid (z:1) and Outlined Stroke (z:3) layers */}
+          <div className="hero-giant-text-wrapper">
+            <span className="hero-text-solid" aria-hidden="true">
+              PORTFOLIO
+            </span>
+            <span className="hero-text-stroke" aria-hidden="true">
+              PORTFOLIO
+            </span>
           </div>
 
-          {/* Layer 2: Subject Portrait Image */}
+          {/* Subject Portrait Image (z:2) */}
           <div className="hero-portrait-wrapper">
             <Image
               src="/hero-model.jpg"
@@ -34,11 +39,6 @@ export default function HeroSection() {
               priority
               className="hero-portrait-img"
             />
-          </div>
-
-          {/* Layer 3: Outlined Foreground Text Overlaying Subject */}
-          <div className="hero-giant-text-fg">
-            PORTFOLIO
           </div>
         </div>
 
