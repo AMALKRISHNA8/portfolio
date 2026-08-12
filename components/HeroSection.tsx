@@ -32,7 +32,7 @@ export default function HeroSection() {
           {/* Subject Portrait Image (z:2) */}
           <div className="hero-portrait-wrapper">
             <Image
-              src="/hero-model.jpg"
+              src="/hero-model.png"
               alt="Amal Krishna A.K Portfolio Portrait"
               width={600}
               height={700}
