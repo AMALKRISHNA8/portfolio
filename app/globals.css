@@ -233,7 +233,7 @@ body {
 
 .stylish-portfolio-title {
   font-family: var(--font-display);
-  font-size: clamp(6.5rem, 20vw, 17.5rem);
+  font-size: clamp(4rem, 12vw, 12rem);
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: 0.05em;
@@ -242,6 +242,20 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   user-select: none;
+  white-space: nowrap;
+}
+
+.typing-cursor {
+  -webkit-text-fill-color: var(--cream-main);
+  animation: blink-cursor 0.7s step-end infinite;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+@keyframes blink-cursor {
+  50% {
+    opacity: 0;
+  }
 }
 
 .stylish-portfolio-glow {
@@ -250,7 +264,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
-  font-size: clamp(6.5rem, 20vw, 17.5rem);
+  font-size: clamp(4rem, 12vw, 12rem);
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: 0.05em;
@@ -261,6 +275,7 @@ body {
   pointer-events: none;
   user-select: none;
   z-index: -1;
+  white-space: nowrap;
 }
 
 /* Subtitle */
@@ -435,8 +450,9 @@ body {
 .logo-text {
   color: var(--cream-light);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .logo-sub {

@@ -1,6 +1,26 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 export default function HeroSection() {
+  const fullName = 'AMAL KRISHNA AK';
+  const [displayText, setDisplayText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < fullName.length) {
+        setDisplayText(fullName.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+        // Blink cursor a few times then hide
+        setTimeout(() => setShowCursor(false), 2000);
+      }
+    }, 120);
+    return () => clearInterval(typingInterval);
+  }, []);
   return (
     <>
       {/* Editorial Canva Cyber Portfolio Hero (Stylish Typography, No Photo) */}
@@ -24,13 +44,14 @@ export default function HeroSection() {
               AMAL KRISHNA A.K
             </div>
 
-            {/* Main Stylish PORTFOLIO Headline */}
+            {/* Main Stylish Name Headline */}
             <div className="stylish-portfolio-wrapper">
               <h1 className="stylish-portfolio-title">
-                PORTFOLIO
+                {displayText}
+                {showCursor && <span className="typing-cursor">|</span>}
               </h1>
               <div className="stylish-portfolio-glow" aria-hidden="true">
-                PORTFOLIO
+                {displayText}
               </div>
             </div>
 

@@ -35,7 +35,7 @@ export default function Navbar() {
               <i className="fas fa-user-shield"></i>
             </div>
             <div className="logo-text">
-              Amal<span className="dot">.</span>
+              Amal Krishna<span className="dot"> AK</span>
               <span className="logo-sub">CyberSec & Dev</span>
             </div>
           </a>
