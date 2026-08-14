@@ -8,6 +8,7 @@ import ProjectsSection from '@/components/ProjectsSection';
 import GithubSection from '@/components/GithubSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Home() {
   return (
@@ -16,12 +17,30 @@ export default function Home() {
       <DragonCursor />
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <GithubSection />
-      <ContactSection />
-      <Footer />
+
+      <ScrollReveal animation="slide-right" duration={0.9}>
+        <AboutSection />
+      </ScrollReveal>
+
+      <ScrollReveal animation="fade-up" duration={0.85}>
+        <SkillsSection />
+      </ScrollReveal>
+
+      <ScrollReveal animation="zoom-in" duration={0.9}>
+        <ProjectsSection />
+      </ScrollReveal>
+
+      <ScrollReveal animation="flip-up" duration={1}>
+        <GithubSection />
+      </ScrollReveal>
+
+      <ScrollReveal animation="blur-in" duration={0.9}>
+        <ContactSection />
+      </ScrollReveal>
+
+      <ScrollReveal animation="fade-up" duration={0.6}>
+        <Footer />
+      </ScrollReveal>
     </main>
   );
 }

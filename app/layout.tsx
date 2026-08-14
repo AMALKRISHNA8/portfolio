@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bebasNeue.variable} ${inter.variable}`}>
+    <html lang="en" data-theme="dark" className={`${bebasNeue.variable} ${inter.variable}`}>
       <head>
         <link
           rel="stylesheet"

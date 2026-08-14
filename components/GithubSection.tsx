@@ -26,7 +26,7 @@ export default function GithubSection() {
                 Regularly pushing security tools, post-quantum experiments, and backend scripts. Check out my repositories and contribution history on GitHub.
               </p>
               <a
-                href="https://github.com"
+                href="https://github.com/amalkrishna8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary float-btn"

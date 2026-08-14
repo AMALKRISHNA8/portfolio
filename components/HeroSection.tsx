@@ -3,24 +3,14 @@
 import { useState, useEffect } from 'react';
 
 export default function HeroSection() {
-  const fullName = 'AMAL KRISHNA AK';
-  const [displayText, setDisplayText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      if (i < fullName.length) {
-        setDisplayText(fullName.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-        // Blink cursor a few times then hide
-        setTimeout(() => setShowCursor(false), 2000);
-      }
-    }, 120);
-    return () => clearInterval(typingInterval);
+    // Small delay before starting the animation for a cinematic feel
+    const timer = setTimeout(() => setIsVisible(true), 300);
+    return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       {/* Editorial Canva Cyber Portfolio Hero (Stylish Typography, No Photo) */}
@@ -39,29 +29,36 @@ export default function HeroSection() {
         <div className="editorial-hero-stage text-hero-stage">
           <div className="stylish-hero-container">
             {/* Name Badge */}
-            <div className="hero-name-pill">
+            <div className={`hero-name-pill ${isVisible ? 'animate-in' : ''}`}>
               <span className="pill-dot"></span>
               AMAL KRISHNA A.K
             </div>
 
-            {/* Main Stylish Name Headline */}
+            {/* Main Stylish Name Headline — Split Line Animation */}
             <div className="stylish-portfolio-wrapper">
               <h1 className="stylish-portfolio-title">
-                {displayText}
-                {showCursor && <span className="typing-cursor">|</span>}
+                <span className={`hero-word-line ${isVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.2s' }}>
+                  <span className="hero-word">AMAL</span>
+                </span>
+                <span className={`hero-word-line ${isVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.4s' }}>
+                  <span className="hero-word">KRISHNA</span>
+                </span>
+                <span className={`hero-word-line ${isVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.6s' }}>
+                  <span className="hero-word">AK</span>
+                </span>
               </h1>
               <div className="stylish-portfolio-glow" aria-hidden="true">
-                {displayText}
+                AMAL KRISHNA AK
               </div>
             </div>
 
             {/* Subtitle Tagline */}
-            <p className="stylish-hero-sub">
+            <p className={`stylish-hero-sub ${isVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.9s' }}>
               Final-year <strong>B.Tech CSE (Cyber Security)</strong> Engineer at <strong>SJCET Palai</strong> • Post-Quantum Cryptography &amp; Secure Systems
             </p>
 
             {/* Action Buttons */}
-            <div className="hero-action-buttons">
+            <div className={`hero-action-buttons ${isVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '1.1s' }}>
               <a href="#projects" className="btn-cream">
                 Explore Projects <i className="fas fa-arrow-right"></i>
               </a>

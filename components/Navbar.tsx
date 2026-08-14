@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +22,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Apply theme to <html> element
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
   const closeMenu = () => setIsOpen(false);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
 
   return (
     <>
@@ -52,13 +63,13 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a href="#projects" className="nav-link" onClick={closeMenu}>
+              <Link href="/projects" className="nav-link" onClick={closeMenu}>
                 <i className="fas fa-folder-open"></i> Projects
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#github" className="nav-link" onClick={closeMenu}>
-                <i className="fab fa-github"></i> Activity
+              <a href="https://github.com/amalkrishna8" className="nav-link" onClick={closeMenu} target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github"></i> GitHub
               </a>
             </li>
             <li>
@@ -68,22 +79,35 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <div
-            className="hamburger"
-            id="hamburger"
-            aria-label="Toggle menu"
-            role="button"
-            tabIndex={0}
-            onClick={() => setIsOpen(!isOpen)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                setIsOpen(!isOpen);
-              }
-            }}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className="nav-right-controls">
+            {/* Theme Toggle */}
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <i className={isDark ? 'fas fa-sun' : 'fas fa-moon'}></i>
+            </button>
+
+            {/* Hamburger */}
+            <div
+              className="hamburger"
+              id="hamburger"
+              aria-label="Toggle menu"
+              role="button"
+              tabIndex={0}
+              onClick={() => setIsOpen(!isOpen)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setIsOpen(!isOpen);
+                }
+              }}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
         </div>
       </nav>

@@ -7,13 +7,60 @@ export default function ContactSection() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastType, setToastType] = useState<'success' | 'error'>('success');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  // ⚠️ REPLACE THIS with your real Web3Forms access key
+  // Get your free key at: https://web3forms.com
+  const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: name,
+          email: email,
+          message: message,
+          subject: `Portfolio Contact: Message from ${name}`,
+          from_name: 'Portfolio Contact Form',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setToastType('success');
+        setToastMessage(
+          'Signal Transmitted! Thank you for reaching out, Amal will reply soon.'
+        );
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setToastType('error');
+        setToastMessage(
+          'Transmission failed! Please try again or email directly.'
+        );
+      }
+    } catch {
+      setToastType('error');
+      setToastMessage(
+        'Connection lost! Please try again or email directly.'
+      );
+    }
+
+    setIsSubmitting(false);
     setShowToast(true);
-    setName('');
-    setEmail('');
-    setMessage('');
 
     setTimeout(() => {
       setShowToast(false);
@@ -45,7 +92,7 @@ export default function ContactSection() {
 
             <div className="contact-links-list">
               <a
-                href="mailto:amalkrishna.ak@gmail.com"
+                href="mailto:amalkrishnaak62@gmail.com"
                 className="c-link-box"
               >
                 <div className="c-icon">
@@ -53,7 +100,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="c-label">Email</div>
-                  <div className="c-val">amalkrishna.ak@gmail.com</div>
+                  <div className="c-val">amalkrishnaak62@gmail.com</div>
                 </div>
               </a>
 
@@ -73,7 +120,7 @@ export default function ContactSection() {
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/amalkrishna8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="c-link-box"
@@ -83,7 +130,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="c-label">GitHub</div>
-                  <div className="c-val">github.com/amalkrishna</div>
+                  <div className="c-val">github.com/amalkrishna8</div>
                 </div>
               </a>
             </div>
@@ -130,13 +177,36 @@ export default function ContactSection() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary form-submit-btn">
-                <i className="fas fa-paper-plane"></i> Send Message
+              <button
+                type="submit"
+                className="btn-cream form-submit-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i> Transmitting...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-paper-plane"></i> Send Message
+                  </>
+                )}
               </button>
             </form>
 
-            <div className={`form-toast ${showToast ? '' : 'hidden'}`}>
-              <i className="fas fa-circle-check"></i> Signal Transmitted! Thank you for reaching out, Amal will reply soon.
+            <div
+              className={`form-toast ${showToast ? '' : 'hidden'} ${
+                toastType === 'error' ? 'form-toast-error' : ''
+              }`}
+            >
+              <i
+                className={
+                  toastType === 'success'
+                    ? 'fas fa-circle-check'
+                    : 'fas fa-circle-exclamation'
+                }
+              ></i>{' '}
+              {toastMessage}
             </div>
           </div>
         </div>
