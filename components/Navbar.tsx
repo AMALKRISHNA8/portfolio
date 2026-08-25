@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,9 +62,9 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <Link href="/projects" className="nav-link" onClick={closeMenu}>
+              <a href="#projects" className="nav-link" onClick={closeMenu}>
                 <i className="fas fa-folder-open"></i> Projects
-              </Link>
+              </a>
             </li>
             <li>
               <a href="https://github.com/amalkrishna8" className="nav-link" onClick={closeMenu} target="_blank" rel="noopener noreferrer">
